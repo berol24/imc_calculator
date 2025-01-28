@@ -3,6 +3,7 @@
     height: auto;
     font-weight: bold;  
     margin: 40px auto ;
+    border-radius: 8px;
 }
 
 .message p {
