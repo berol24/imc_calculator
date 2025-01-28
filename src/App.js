@@ -9,6 +9,7 @@ import good from "./assets/good.png";
 import stresse from "./assets/stresse.png";
 import attention from "./assets/attention.png";
 import stop from "./assets/stop.png";
+import Result from "./components/Result";
 
 function App() {
   let [poids, setPoids] = useState("");
@@ -16,6 +17,7 @@ function App() {
   const [verify, setVerify] = useState(true);
   const [message, setMessage] = useState("");
   const [affiche_icone, setAffiche_icone] = useState(true);
+  const [affiche_result, setAffiche_result] = useState(false);
   const [imageIcone, setImageIcone] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("white");
   let [messageErrorPoids, setMessageErrorPoids] = useState("");
@@ -62,6 +64,20 @@ function App() {
   };
 
   const handleVerify = () => {
+
+ // Vérification si les champs sont remplis
+ if (!poids || !taille) {
+  if (!poids) {
+    setMessageErrorPoids("Veuillez remplir le champ poids.");
+  }
+  if (!taille) {
+    setMessageErrorTaille("Veuillez remplir le champ taille.");
+  }
+  return; 
+}
+
+
+    
     if (imc < 18.5) {
       setImageIcone(peur);
       setMessage(
@@ -100,6 +116,7 @@ function App() {
     }
     setMessageErrorPoids("");
     setMessageErrorTaille("");
+    setAffiche_result(true);
   };
   const handleInitialise = () => {
     window.location.reload();
@@ -112,6 +129,7 @@ function App() {
     setImageIcone("");
     setMessageErrorPoids("");
     setMessageErrorTaille("");
+    setAffiche_result(false);
   };
 
   return (
@@ -134,6 +152,7 @@ function App() {
         messageError={messageErrorTaille}
         setMessageError={setMessageErrorTaille}
       />
+       {affiche_result &&  <Result imc ={imc? imc.toFixed(2): 0} />}
 
       <div className="btn">
         {verify && (
@@ -150,6 +169,8 @@ function App() {
         />
       </div>
 
+
+    
       <Message
         message={message}
         affiche_icone={affiche_icone}
