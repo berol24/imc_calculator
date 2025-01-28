@@ -3,15 +3,6 @@ import './styles/Message.css'
 
 
 function Message(props) {
-//   const style = {
-//     border: 1px solid  red;
-//     width: 370px;
-//     height: auto;
-//     font-weight: bold;
-    
-//     margin: 40px auto ;
-//   }
-
 
   return (
     <>

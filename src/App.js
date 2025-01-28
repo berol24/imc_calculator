@@ -11,20 +11,57 @@ import attention from "./assets/attention.png";
 import stop from "./assets/stop.png";
 
 function App() {
-  const [poids, setPoids] = useState("");
-  const [taille, setTaille] = useState("");
+  let [poids, setPoids] = useState("");
+  let [taille, setTaille] = useState("");
   const [verify, setVerify] = useState(true);
-  const [initialise, setInitialise] = useState(false);
   const [message, setMessage] = useState("");
   const [affiche_icone, setAffiche_icone] = useState(true);
   const [imageIcone, setImageIcone] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("white");
+  let [messageErrorPoids, setMessageErrorPoids] = useState("");
+  let [messageErrorTaille, setMessageErrorTaille] = useState("");
 
-   let imc = poids / (taille * taille);
+  let imc = poids / (taille * taille);
 
+  const handlePoidsChange = (e) => {
+    const value = e.target.value;
+
+    // Vérifie si la valeur contient uniquement des chiffres ou est vide
+    if (/^\d*\.?\d*$/.test(value)) {
+      setPoids(value);
+      setMessageErrorPoids(""); 
+    } else {
+      setMessageErrorPoids("Entrez uniquement des chiffres."); 
+    }
+
+    if (value === "" || value >= 0) {
+      setPoids(value); 
+      setMessageErrorPoids(""); 
+    } else {
+      setMessageErrorPoids("Le poids ne peut pas être négatif."); 
+    }
+  };
+
+  const handleTailleChange = (e) => {
+    const value = e.target.value;
+
+    // Vérifie si la valeur contient uniquement des chiffres ou est vide
+    if (/^\d*\.?\d*$/.test(value)) {
+      setTaille(value);
+      setMessageErrorTaille("");
+    } else {
+      setMessageErrorTaille("Entrez uniquement des chiffres."); // Gestion des caractères non valides
+    }
+
+    if (value === "" || value >= 0) {
+      setTaille(value);
+      setMessageErrorTaille("");
+    } else {
+      setMessageErrorTaille("La taille ne peut pas être négatif."); // Gestion des nombres négatifs
+    }
+  };
 
   const handleVerify = () => {
-
     if (imc < 18.5) {
       setImageIcone(peur);
       setMessage(
@@ -32,7 +69,7 @@ function App() {
       );
 
       setBackgroundColor("#02B1EC");
-    } else if ((imc >= 18.5) && (imc < 25)) {
+    } else if (imc >= 18.5 && imc < 25) {
       setImageIcone(good);
       setMessage(
         "Votre IMC est dans la plage normale, ce qui est généralement considéré comme un indicateur de bonne santé. Continuez à maintenir un mode de vie équilibré."
@@ -61,9 +98,8 @@ function App() {
       );
       setBackgroundColor("#E40714");
     }
-
-    setVerify(false);
-    setInitialise(true);
+    setMessageErrorPoids("");
+    setMessageErrorTaille("");
   };
   const handleInitialise = () => {
     window.location.reload();
@@ -71,22 +107,49 @@ function App() {
     setTaille("");
     setMessage("");
     setVerify(true);
-    setInitialise(false);
     setAffiche_icone(false);
     setBackgroundColor("white");
-    setImageIcone("")
-    // imc = 0;
+    setImageIcone("");
+    setMessageErrorPoids("");
+    setMessageErrorTaille("");
   };
 
   return (
     <div className="App">
       <Header />
-      <Input unite={"Kg"} type={"poids"} value={poids} onChange={setPoids} />
-      <Input unite={"m"} type={"taille"} value={taille} onChange={setTaille} />
-      {verify && <Button nom={"Vérifier"} onClick={handleVerify} />}
-      {initialise && (
-        <Button nom={"Réinitialiser"} onClick={handleInitialise} />
-      )}
+      <Input
+        unite={"Kg"}
+        type={"poids"}
+        value={poids}
+        onChange={handlePoidsChange}
+        messageError={messageErrorPoids}
+        setMessageError={setMessageErrorPoids}
+      />
+
+      <Input
+        unite={"m"}
+        type={"taille"}
+        value={taille}
+        onChange={handleTailleChange}
+        messageError={messageErrorTaille}
+        setMessageError={setMessageErrorTaille}
+      />
+
+      <div className="btn">
+        {verify && (
+          <Button
+            nom={"Vérifier"}
+            backgroundButton={"#08A22A"}
+            onClick={handleVerify}
+          />
+        )}
+        <Button
+          nom={"Réinitialiser"}
+          backgroundButton={"#7f8681"}
+          onClick={handleInitialise}
+        />
+      </div>
+
       <Message
         message={message}
         affiche_icone={affiche_icone}

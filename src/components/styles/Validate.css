@@ -1,15 +1,18 @@
-.validate{
-    border: 1px solid red;
-    width: 200px;
-    height: 70px;
-    margin: auto;
+.validate {
+  width: 150px;
+  height: 70px;
+  margin: auto;
+ 
 }
-button{
-    font-size: 30px;
-    border: none; 
-    width: 100%;
-    height: 100%;
-    background-color: #08A22A;
-    color: white;
-    cursor: pointer;
+
+button {
+  border-radius: 8px;
+  font-size: 25px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: white;
+  cursor: pointer;
 }
+
+
