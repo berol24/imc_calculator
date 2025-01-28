@@ -1,0 +1,8 @@
+.header{
+    background-color: #08A22A;
+    border: 1px solid #08A22A;
+}
+.header h1 {
+    color: white;
+    margin-left: 20px;
+}

@@ -1,0 +1,31 @@
+.row{
+    border: 1px solid blue;
+    margin: 80px 0
+}
+
+.input_row{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+#weight{
+    width: 315px;
+    height: 50px;
+    font-size: 24px;
+    background-color: rgba(217, 217, 217,0.5);
+}
+
+label{
+    font-size: 24px;
+    color: #08A22A;
+    margin-left: 20px;
+}
+
+span{
+    font-size: 24px;
+    color: #08A22A;
+}

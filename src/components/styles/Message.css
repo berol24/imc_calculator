@@ -1,0 +1,22 @@
+.message {
+    /* border: 1px solid  red; */
+    width: 370px;
+    height: auto;
+    font-weight: bold;  
+    margin: 40px auto ;
+    /* background-color: #02B1EC; */
+}
+
+.message p {
+    text-align: justify;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    
+}
+
+.image_message{
+display: flex;
+justify-content: center;
+align-items: center;
+}
