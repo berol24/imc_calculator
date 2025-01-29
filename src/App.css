@@ -4,4 +4,20 @@
 
 .btn{
     display: flex;
+    width: 56%;
+    margin: auto;
+} 
+
+@media screen and (max-width: 760px) {
+
+.App{
+    overflow-x: hidden;
+}
+
+.btn{
+    display: flex;
+    width: 100%;
+    margin: auto;
+} 
+
 }

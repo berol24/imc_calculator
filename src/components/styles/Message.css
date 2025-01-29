@@ -1,21 +1,33 @@
 .message {
-    width: 370px;
-    height: auto;
-    font-weight: bold;  
-    margin: 40px auto ;
-    border-radius: 8px;
+  max-width: 90%;
+  width: 355px;
+  height: auto;
+  font-weight: bold;
+  margin: 40px auto;
+  border-radius: 8px;
 }
 
 .message p {
-    text-align: justify;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    
+  text-align: justify;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
 }
 
-.image_message{
-display: flex;
-justify-content: center;
-align-items: center;
+.image_message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+  .message {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+
+  .message p {
+    font-size: 18px;
+    padding: 15px;
+  }
 }

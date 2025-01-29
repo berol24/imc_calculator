@@ -1,18 +1,33 @@
-.result{
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #08A22A;
-    margin: 40px auto;
-
+.result {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #08a22a;
+  margin: 40px auto;
+  max-width: 100%;
 }
 
-.result p , span{
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
+.result p,
+.result span {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+@media screen and (max-width: 760px) {
+  .result {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+  }
+
+  .result p,
+  .result span {
+    font-size: 18px;
+  }
 }
