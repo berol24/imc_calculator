@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
 import Input from "./components/Input";
@@ -24,6 +24,13 @@ function App() {
   let [messageErrorTaille, setMessageErrorTaille] = useState("");
 
   let imc = poids / (taille * taille);
+
+useEffect(() => {
+  fetch('http://localhost:5000/api/hello')
+    .then(res => res.json())
+    .then(data => console.log(data.message));
+}, []);
+
 
   const handlePoidsChange = (e) => {
     const value = e.target.value;
